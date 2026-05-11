@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Euclidean Calculator{% endblock %}
+{% block content %}
+<div style="padding-top: 1cm;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-warning">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %} 
+</div>
+<div class="container py-5 justify-content-center">
+    <form style="padding-bottom: 1cm; padding-top: 2cm;" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="row">
+            <div class="col-auto gx-3 mb-4">
+                <input type="number" class="form-control" id="fraction1" placeholder="Fraction Two" name="fraction1" style="width: 5cm;">
+                <hr style="width: 5cm;">
+                <input type="number" class="form-control" id="fraction2" placeholder="Fraction One" name="fraction2" style="width: 5cm;">
+            </div>
+            <div class="col-auto mt-4">
+                <button class="btn btn-primary btn-lg px-4" type="submit">Calculate</button>
+            </div>
+        </div>
+        <a href="https://en.wikipedia.org/wiki/Euclidean_algorithm">Learn What This Calculator Does</a>
+    </form>
+</div>
+
+{% endblock %}

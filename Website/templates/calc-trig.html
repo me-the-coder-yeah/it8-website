@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Slope Plotter{% endblock %}
+{% block content %}
+<div style="padding-top: 1cm;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-warning">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %} 
+</div>
+<form method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <div class="row align-items-center d-flex justify-content-center" style="height: 50vh;">
+        <div class="col-auto">
+            <h3>{{ function }}(</h3>
+        </div>
+        <div class="col-auto">
+            <input type="number" class="form-control" style="width: 5cm;" placeholder="A Number Here" name="value">
+        </div>
+        <div class="col-auto">
+            <h3>)</h3>
+        </div>
+        <div class="col-auto">
+            <button class="btn btn-outline-primary btn-lg px-4" type="submit">Go</button>
+        </div>
+    </div>
+    <a style="padding-left: 3cm;" href="https://en.wikipedia.org/wiki/Trigonometric_functions">Learn What This Calculator Does</a>
+</form>
+{% endblock %}

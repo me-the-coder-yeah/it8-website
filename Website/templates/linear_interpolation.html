@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Linear Interpolation{% endblock %}
+{% block content %}
+<div style="padding-top: 1cm;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-warning">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %} 
+</div>
+ <div class="container py-5">
+    <form style="padding-bottom: 1cm; padding-top: 2cm;" method="post">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="row gx-3 mb-4">
+            <div class="col">
+                <input type="number" class="form-control" id="x1" placeholder="x1" name="x1">
+            </div>
+            <div class="col">
+                <input type="number" class="form-control" id="x2" placeholder="x2" name="x2">
+            </div>
+            <div class="col">
+                <input type="number" class="form-control" id="y1" placeholder="y1" name="y1">
+            </div>
+            <div class="col">
+                <input type="number" class="form-control" id="y2" placeholder="y2" name="y2">
+            </div>
+            <div class="col">
+                <input type="number" class="form-control" id="x" placeholder="POI (x)" name="x">
+            </div>
+        </div>
+        <hr class="my-4">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                <button class="btn btn-primary btn-lg px-4" type="submit">Calculate</button>
+            </div>
+        </div>
+        <a href="https://en.wikipedia.org/wiki/Linear_interpolation">Learn What This Calculator Does</a>
+    </form>
+</div>
+
+{% endblock %}
