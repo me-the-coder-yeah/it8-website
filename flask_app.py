@@ -13,7 +13,7 @@ class User(Base, flask_login.UserMixin):
     id = Column(Integer, primary_key=True)
     username = Column(String, unique=True)
     password = Column(String)
-
+#let's go
 app = Flask(__name__)
 engine = create_engine(f"postgresql://neondb_owner:npg_Pb7kfi0zaSmK@ep-shy-night-aq32kjx1-pooler.c-8.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require", echo=True)
 SessionLocal = sessionmaker(bind=engine)
